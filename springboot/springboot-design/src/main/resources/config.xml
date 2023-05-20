@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <className name="MT1101">com.ac.springboot.design.behavior.strategy.strategy5.MT1101ReceiptHandleStrategy</className>
+</config>

@@ -1,0 +1,78 @@
+#����Դ����
+spring:
+  datasource:
+    # ��һ���Ҫ��ʽָ��
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/springboot?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+      username: root
+      password: root
+      # ��ʼ����С����С�����
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      # ���û�ȡ���ӵȴ���ʱ��ʱ��
+      maxWait: 60000
+      # ���ü����òŽ���һ�μ�⣬�����Ҫ�رյĿ������ӣ���λ�Ǻ���
+      timeBetweenEvictionRunsMillis: 60000
+      # ����һ�������ڳ�����С�����ʱ�䣬��λ�Ǻ���
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      # ��������ʱִ��validationQuery��������Ƿ���Ч
+      testOnBorrow: false
+      # �黹����ʱִ��validationQuery��������Ƿ���Ч
+      testOnReturn: false
+      # ��PSCache������ָ��ÿ��������PSCache�Ĵ�С
+      # poolPreparedStatements: true
+      # maxPoolPreparedStatementPerConnectionSize: 20
+      # ������أ�������Ϣ
+      stat-view-servlet:
+        # �������ҳ��
+        enabled: true
+        # ���ϵͳ�û���
+        login-username: druid
+        # ���ϵͳ����
+        login-password: 123456
+        # �Ƿ�������ռ������
+        reset-enable: false
+        # ���ϵͳ·��
+        url-pattern: "/druid/*"
+        # �ɷ��ʼ��ϵͳ�� IP �б���������
+        # allow: 127.0.0.1
+        # ��ֹ���ʼ��ϵͳ�� IP �б���������
+        # deny:
+      # ������չ��������õĲ���У����ͳ���õ� stat����־�õ� slf4j������ sql ע��� wall
+      filters: stat,wall,slf4j
+      # ������ SQL �������ϲ���غ��� SQL ��¼
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # �ϲ���� DruidDataSource �ļ������
+      useGlobalDataSourceStat: true
+      # ���� web ��أ�WebӦ�á�URI��ء�Session��أ�
+      web-stat-filter:
+        # ���� Web ���
+        enabled: true
+        # ��Ҫ��ص�·��
+        url-pattern: /*
+        # ����ؾ�̬�ļ��ͼ��ϵͳ�Լ�������
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        # ͳ�����������
+        profile-enable: true
+      # ���� Spring ���
+      aop-patterns: com.ac.druid.controller.*,com.ac.druid.service.*,com.ac.druid.mapper.*
+      # ��־����
+      filter:
+        slf4j:
+          enabled: true
+          statement-executable-sql-log-enable: true
+
+# ��־�������
+logging:
+  level:
+    # ��� SQL
+    druid.sql.Statement: debug
+    # �����ѯ���
+    druid.sql.ResultSet: debug
+
+#����druid����̨ http://localhost:8080/druid/index.html

@@ -1,0 +1,6 @@
+spring:
+  influx:
+    url: http://192.168.2.172:8086
+    user: root
+    password: root
+    database: mydb
