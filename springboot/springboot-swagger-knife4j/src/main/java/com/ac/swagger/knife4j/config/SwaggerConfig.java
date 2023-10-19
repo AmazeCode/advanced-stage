@@ -1,4 +1,4 @@
-package com.ac.swagger.config;
+package com.ac.swagger.knife4j.config;
 
 import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
@@ -11,12 +11,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * @Description: Swagger配置
- * @author: zhangyadong
- * @Date: 2020/7/22 0022 下午 8:57
- * @version: V1.0
- */
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -24,8 +21,11 @@ public class SwaggerConfig {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                // 指定构建api文档的详细信息的方法：apiInfo()
+                .apiInfo(apiInfo())
+                .select()
+                // 指定要生成api接口的包路径，这里把controller作为包路径，生成controller中的所有接口
+                .apis(RequestHandlerSelectors.basePackage("com.ac.swagger.knife4j.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -37,9 +37,15 @@ public class SwaggerConfig {
      * @author zhangyadong
      * @date 2020/7/22 0022 下午 9:00
      */
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Spring Boot实战")
-                .description("Spring Boot实战的RESTFul接口文档说明")
-                .version("1.0").build();
+    private ApiInfo apiInfo(){
+        return new ApiInfoBuilder()
+                // 设置页面标题
+                .title("Spring Boot集成Swagger2接口总览")
+                // 设置接口描述
+                .description("测试系统")
+                // 设置版本
+                .version("1.0")
+                // 构建
+                .build();
     }
 }
