@@ -40,6 +40,7 @@
     <modules>
         <module>springboot-actuator</module>
         <module>springboot-aop</module>
+        <module>springboot-basic-es</module>
         <module>springboot-configuration</module>
         <module>springboot-druid</module>
         <module>springboot-exception</module>
