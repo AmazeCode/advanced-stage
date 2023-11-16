@@ -39,12 +39,14 @@
 
     <modules>
         <module>springboot-actuator</module>
+        <module>springboot-advanced-es</module>
         <module>springboot-aop</module>
         <module>springboot-basic-es</module>
         <module>springboot-configuration</module>
         <module>springboot-druid</module>
         <module>springboot-exception</module>
         <module>springboot-freemarker</module>
+        <module>springboot-influxdb</module>
         <module>springboot-java-feature</module>
         <module>springboot-jpa</module>
         <module>springboot-mail</module>
