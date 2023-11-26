@@ -48,6 +48,7 @@
         <module>springboot-freemarker</module>
         <module>springboot-influxdb</module>
         <module>springboot-java-feature</module>
+        <module>springboot-javaclient-es</module>
         <module>springboot-jpa</module>
         <module>springboot-mail</module>
         <!-- 数据缓存篇 -->

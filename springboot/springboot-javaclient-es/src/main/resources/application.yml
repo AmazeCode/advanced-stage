@@ -1,0 +1,8 @@
+server:
+  port: 8088
+
+# es 服务相关配置
+elasticsearch:
+  clusterNodes: 192.168.0.107:9200
+  account:
+  passWord:
