@@ -22,16 +22,15 @@
         <mysql.version>8.0.30</mysql.version>
         <mybatis.version>2.2.2</mybatis.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
-        <mybatis-plus-page.version>1.4.5</mybatis-plus-page.version>
+        <mybatis-plus-page.version>2.1.0</mybatis-plus-page.version>
         <lombook.version>1.18.24</lombook.version>
         <session-redis.version>2.7.0</session-redis.version>
         <springboot.redisson.version>3.17.7</springboot.redisson.version>
         <redisson.client.version>3.17.7</redisson.client.version>
         <influxdb-java.version>2.14</influxdb-java.version>
-        <!-- 指明使用JDK11 -->
-        <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <!-- 指明使用utf-8编码 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
@@ -55,6 +54,7 @@
         <!-- Spring Boot整合Mybatis完整Web案例 -->
         <module>springboot-mybatis</module>
         <module>springboot-mybatis-plus</module>
+        <module>springboot-polardb</module>
         <module>springboot-mybatis-generator</module>
         <!-- Spring Boot 之配置文件详解 -->
         <module>springboot-properties</module>
