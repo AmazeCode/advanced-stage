@@ -15,6 +15,11 @@
     </parent>
 
     <dependencies>
+        <!-- web(启动项目需要) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!--SpringBoot整合MyBatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -39,6 +44,7 @@
             <artifactId>mybatis-generator-core</artifactId>
             <!--<version>1.4.0</version>-->
         </dependency>
+
         <!--Mysql数据库驱动-->
         <dependency>
             <groupId>mysql</groupId>
@@ -46,19 +52,19 @@
             <!--<version>8.0.15</version>-->
         </dependency>
 
-        <!-- swagger2 -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
-        <!-- swagger-ui 及版本页面 -->
+        <!-- Hutool-all 当下最新版本 -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
         </dependency>
 
-        <!-- knife4j(新版本页面) -->
+        <!-- knife4j -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>

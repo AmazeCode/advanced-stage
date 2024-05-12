@@ -23,7 +23,7 @@ import java.net.UnknownHostException;
  * @version: V1.0
  */
 @Configuration
-@EnableSwagger2 // springfox-swagger2 比当前版本高是该注解废弃，使用@EnableSwagger2WebMvc
+@EnableSwagger2 // springfox-swagger2 比当前版本高时该注解废弃，使用@EnableSwagger2WebMvc
 public class Swagger2Config {
 
     @Resource

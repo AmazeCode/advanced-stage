@@ -16,5 +16,5 @@ spring:
 # MyBatis mapper.xml路径配置
 mybatis:
   mapper-locations:
-    - classpath:dao/*.xml
+    - classpath:mapper/*.xml
     - classpath*:mapper/*.xml

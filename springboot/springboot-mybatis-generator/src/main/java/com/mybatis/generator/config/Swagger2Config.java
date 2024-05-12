@@ -1,9 +1,8 @@
-package com.ac.swagger.knife4j.config;
+package com.mybatis.generator.config;
 
-import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
-import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -12,12 +11,22 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.annotation.Resource;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 
+/**
+ * @Description: Swagger配置
+ * @author: zhangyadong
+ * @Date: 2020/7/22 0022 下午 8:57
+ * @version: V1.0
+ */
 @Configuration
-@EnableSwagger2
-public class SwaggerConfig {
+@EnableSwagger2 // springfox-swagger2 比当前版本高时该注解废弃，使用@EnableSwagger2WebMvc
+public class Swagger2Config {
+
+    @Resource
+    private Environment environment;
 
     @Bean
     public Docket createRestApi() {
@@ -26,7 +35,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 // 指定要生成api接口的包路径，这里把controller作为包路径，生成controller中的所有接口
-                .apis(RequestHandlerSelectors.basePackage("com.ac.swagger.knife4j.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.mybatis.generator.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -39,14 +48,23 @@ public class SwaggerConfig {
      * @date 2020/7/22 0022 下午 9:00
      */
     private ApiInfo apiInfo(){
+
+        String swaggerurl = null;
+        try {
+            swaggerurl = String.format("http://%s:%s/swagger-ui.html", Inet4Address.getLocalHost().getHostAddress(),environment.getProperty("server.port"));
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         return new ApiInfoBuilder()
-                // 设置页面标题
-                .title("Spring Boot集成Swagger2接口总览")
-                // 设置接口描述
-                .description("测试系统")
-                // 设置版本
-                .version("1.0")
-                // 构建
-                .build();
+                .title("Swagger2")
+                .description(swaggerurl)
+                .version("1.0").build();
     }
+
+    /*
+        整合步骤:
+        1、引入依赖
+        2、添加配置类
+        3、设置yml配置文件
+     */
 }

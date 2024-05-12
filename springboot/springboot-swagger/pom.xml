@@ -43,10 +43,10 @@
 		</dependency>
 
 		<!-- knife4j(新版本页面) -->
-		<dependency>
+		<!--<dependency>
 			<groupId>com.github.xiaoymin</groupId>
 			<artifactId>knife4j-spring-boot-starter</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<!--  lombok-->
 		<dependency>
