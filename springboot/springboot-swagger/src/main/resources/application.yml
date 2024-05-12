@@ -1,7 +1,7 @@
 server:
   port: 8080
 
-# springboot 2.4之后版本需要添加以下配置否则
+# springboot 2.4之后版本需要添加以下配置否则报错
 spring:
   mvc:
     pathmatch:

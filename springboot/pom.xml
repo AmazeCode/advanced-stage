@@ -22,12 +22,16 @@
         <mysql.version>8.0.30</mysql.version>
         <mybatis.version>2.2.2</mybatis.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
-        <mybatis-plus-page.version>2.1.0</mybatis-plus-page.version>
+        <pagehelper-starter.version> 2.1.0</pagehelper-starter.version>
+        <mybatis-generator.version>1.4.2</mybatis-generator.version>
         <lombook.version>1.18.24</lombook.version>
         <session-redis.version>2.7.0</session-redis.version>
         <springboot.redisson.version>3.17.7</springboot.redisson.version>
         <redisson.client.version>3.17.7</redisson.client.version>
+        <druid.version>1.1.21</druid.version>
         <influxdb-java.version>2.14</influxdb-java.version>
+        <swagger.version>2.9.2</swagger.version>
+        <knife4j-starter.version>2.0.9</knife4j-starter.version>
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -185,29 +189,64 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-            <!-- mybatis -->
+            <!-- SpringBoot整合MyBatis -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
-            <!-- mybatis-plus -->
+            <!-- mybatis-plus starter -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
-            <!-- mybatis pagehelper -->
+            <!-- pagehelper starter -->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${mybatis-plus-page.version}</version>
+                <version>${pagehelper-starter.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-core</artifactId>
+                <version>${mybatis-generator.version}</version>
+            </dependency>
+
+            <!-- Druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombook.version}</version>
             </dependency>
+            <!-- swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- swagger-ui 及版本页面 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- knife4j(新版本页面) -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j-starter.version}</version>
+            </dependency>
+
             <!-- influxdb -->
             <dependency>
                 <groupId>org.influxdb</groupId>
