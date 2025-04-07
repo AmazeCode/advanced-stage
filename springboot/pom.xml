@@ -3,12 +3,48 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
+    <!--
+    spring-boot-starter-parent是一个特殊的Starter,提供了一些Maven的默认配置,同时还提供了dependency-management,可以使开发着在引入其他依赖时不必输入版本号,方便依赖管理.SpringBoot中提供的Starter非常多,这些Starter主要为第三方库提供自动配置
+    spring-boot-starter-parent主要提供了如下默认配置:
+    Java版本默认使用1.8
+    编码格式默认使用UTF-8
+    提供Dependency Management,进行项目依赖的版本管理
+    默认的资源过滤与插件配置
+    spring-boot-starter-parent虽然方便,但是在公司开发微服务项目或者多模块项目时一般需要使用公司自己的parent,这个时候如果还想进行项目依赖版本统一管理,就需要使用dependencyManagement来实现了.添加如下代码到pom.xml文件中
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupid>org.springframework.boot</groupid>
+                <artifactid>spring-boot-dependencies</artifactid>
+                <version>2 .0.4.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    此时就可以不继承spring-boot-starter-parent了,但是Java的版本编码格式等都需要开发者手动配置.Java版本的配置很简单,添加一个plugin即可:
+    <plugin>
+        <groupid>org.apache.maven.plugins</groupid>
+        <artifactid>maven-compiler-plugin</artifactid>
+        <version>3.1</version>
+        <co口figuration>
+         <source>l.8</source>
+        <target>l.8</target>
+        </configurat工on>
+     </plugin>
+     至于编码格式,如果采用了IDEA以及STS创建SpringBoot项目,那么编码格式默认会加上;如果通过普通Maven项目配置成的SpringBoot项目,那么pom.xml文件中加入如下配置即可:
+
+     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+     </properties>
+     -->
+    <!--<parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
+    </parent>-->
     <groupId>com.ac.springboot</groupId>
     <artifactId>springboot</artifactId>
     <packaging>pom</packaging>
@@ -16,7 +52,7 @@
     <name>springboot</name>
 
     <properties>
-        <springboot.version>2.7.4</springboot.version>
+        <spring-boot.version>2.7.4</spring-boot.version>
         <springboot.log4j>1.3.8.RELEASE</springboot.log4j>
         <hutool-all.version>5.7.16</hutool-all.version>
         <mysql.version>8.0.30</mysql.version>
@@ -44,6 +80,7 @@
         <module>springboot-actuator</module>
         <module>springboot-advanced-es</module>
         <module>springboot-aop</module>
+        <module>springboot-banner</module>
         <module>springboot-basic-es</module>
         <module>springboot-configuration</module>
         <module>springboot-druid</module>
@@ -77,32 +114,32 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- web -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- jdbc -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- redis -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- session -->
             <dependency>
@@ -126,13 +163,13 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-validation</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- aop -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- log4j -->
             <dependency>
@@ -144,38 +181,38 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- 测试插件 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
             <!-- thymeleaf -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-thymeleaf</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- freemarker -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-freemarker</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- jpa -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- mail -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-mail</artifactId>
-                <version>${springboot.version}</version>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!-- hutool -->
             <dependency>
