@@ -19,13 +19,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>${springboot.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <!-- web 支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${springboot.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <!-- layout模板 -->
         <dependency>
